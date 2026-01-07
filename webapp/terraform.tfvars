@@ -1,5 +1,5 @@
-project_name  = "att"
-vertical_name = "cpg"
+project_name  = "kpmg"
+vertical_name = "retail"
 env           = "dev"
 
 location = "Central India"
