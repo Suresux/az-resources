@@ -1,4 +1,4 @@
-project_name  = "ey"
+project_name  = "att"
 vertical_name = "cpg"
 env           = "dev"
 
