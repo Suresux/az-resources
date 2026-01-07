@@ -7,7 +7,7 @@ location = "Central India"
 app_service_plan_sku_name = "B1"
 app_service_plan_os_type  = "Linux"
 
-container_image_name = "myapp:latest"
+container_image_name = "ash:latest"
 
 acr_sku           = "Basic"
 acr_admin_enabled = false
