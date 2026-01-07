@@ -12,25 +12,13 @@ jobs:
         working-directory: webapp
 
     steps:
-
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Install Terraform
+      - name: Setup Terraform
         uses: hashicorp/setup-terraform@v2
         with:
           terraform_version: 1.6.6
-
-      - name: Azure Login
-        uses: azure/login@v1
-        with:
-          creds: |
-            {
-              "clientId": "${{ secrets.CLIENT_ID }}",
-              "clientSecret": "${{ secrets.CLIENT_SECRET }}",
-              "subscriptionId": "${{ secrets.SUBSCRIPTION_ID }}",
-              "tenantId": "${{ secrets.TENANT_ID }}"
-            }
 
       - name: Terraform Init
         env:
@@ -46,10 +34,4 @@ jobs:
           ARM_TENANT_ID: ${{ secrets.TENANT_ID }}
           ARM_CLIENT_ID: ${{ secrets.CLIENT_ID }}
           ARM_CLIENT_SECRET: ${{ secrets.CLIENT_SECRET }}
-        run: |
-          terraform plan \
-            -var "subscription_id=${{ secrets.SUBSCRIPTION_ID }}" \
-            -var "tenant_id=${{ secrets.TENANT_ID }}" \
-            -var "client_id=${{ secrets.CLIENT_ID }}" \
-            -var "client_secret=${{ secrets.CLIENT_SECRET }}" \
-            -var-file="terraform.tfvars"
+        run: terraform plan -var-file="terraform.tfvars"
